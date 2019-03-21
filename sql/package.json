@@ -1,0 +1,19 @@
+{
+  "name": "sql-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test/test.js",
+  "scripts": {
+    "test": "mocha test/*.js  --reporter mochawesome --reporter-options reportDir=test/reports,reportFilename=index"
+  },
+  "author": "#ArquitecturaTD",
+  "license": "ISC",
+  "devDependencies": {
+    "easy-sql-tests": "^1.1.2",
+    "mocha": "^6.0.2",
+    "mochawesome": "^3.1.1"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  }
+}
