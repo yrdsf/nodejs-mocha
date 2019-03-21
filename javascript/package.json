@@ -10,8 +10,8 @@
   },
   "scripts": {
     "clean": "rm -rf dist reports .nyc_output",
-    "pretest": "npm run clean && npm run lint:report",
-    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.spec.js",
+    "pretest": "npm run clean",
+    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.js",
     "start": "nodemon src/app.js",
     "build": "babel src --out-dir dist --copy-files && cp env.yaml dist/",
     "prestart:stage": "npm run clean && npm run build",
@@ -63,7 +63,8 @@
     "eslint": "^5.6.1",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "nyc": "^13.0.1",
-    "prettier": "^1.14.3"
+    "nyc": "^13.3.0",
+    "prettier": "^1.14.3",
+    "request": "^2.88.0"
   }
 }
