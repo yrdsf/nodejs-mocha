@@ -19,10 +19,10 @@ describe("Unit testing AQT", () => {
     });
   });
 
-  describe("404 error", () => {
+  /*describe("404 error", () => {
     it("return category by incorrect iso", async () => {
       const res = await chai.request(app).get("/NOT_FOUND/404");
       expect(res).to.have.status(404);
     });
-  });
+  });*/
 });
