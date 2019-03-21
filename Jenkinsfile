@@ -14,9 +14,17 @@ node {
                 dir('./javascript') {
                     bat 'npm install'
                 }
+                dir('./sql') {
+                    bat 'npm install'
+                }
             }  
-            stage('Test') {
+            stage('Test NodeJs') {
                 dir('./javascript') {
+                    bat 'npm test'
+                }
+            } 
+            stage('Test SQL') {
+                dir('./sql') {
                     bat 'npm test'
                 }
             } 
