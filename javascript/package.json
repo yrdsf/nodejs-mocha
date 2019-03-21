@@ -9,7 +9,7 @@
     "test": "test"
   },
   "scripts": {
-    "clean": "rm -rf dist reports .nyc_output",
+    "clean": "rimraf dist reports .nyc_output",
     "pretest": "npm run clean",
     "test": "cross-env NODE_ENV=test nyc mocha test/**/*.js",
     "start": "nodemon src/app.js",
@@ -65,6 +65,7 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "^3.0.0",
     "nyc": "^13.3.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.3"
   }
 }
