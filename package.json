@@ -1,0 +1,69 @@
+{
+  "name": "nodejs-mocha",
+  "version": "1.0.0",
+  "description": "unit testing with mocha",
+  "main": "src/app.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "rm -rf dist reports .nyc_output",
+    "pretest": "npm run clean && npm run lint:report",
+    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.spec.js",
+    "start": "nodemon src/app.js",
+    "build": "babel src --out-dir dist --copy-files && cp env.yaml dist/",
+    "prestart:stage": "npm run clean && npm run build",
+    "start:stage": "cross-env NODE_ENV=stage node ./dist/app.js",
+    "prestart:production": "npm run clean && npm run build",
+    "start:production": "cross-env NODE_ENV=production node ./dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrdsf/nodejs-mocha.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mocha",
+    "test"
+  ],
+  "author": "yrdsf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yrdsf/nodejs-mocha/issues"
+  },
+  "homepage": "https://github.com/yrdsf/nodejs-mocha#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "koa": "^2.7.0",
+    "koa-compress": "^3.0.0",
+    "koa-helmet": "^4.1.0",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mocha": "^6.0.2",
+    "mongodb": "^3.1.13",
+    "nodemon": "^1.18.10",
+    "yenv": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.2.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-transform-arrow-functions": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.0.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.3"
+  }
+}
