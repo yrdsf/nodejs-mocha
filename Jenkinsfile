@@ -11,12 +11,12 @@ node {
                 checkout scm
             }
             stage('Install dependencies') {
-                dir('./javacript') {
+                dir('./javascript') {
                     bat 'npm install'
                 }
             }  
             stage('Test') {
-                dir('./javacript') {
+                dir('./javascript') {
                     bat 'npm test'
                 }
             } 
