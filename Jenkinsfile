@@ -12,12 +12,12 @@ node {
             }
             stage('Install dependencies') {
                 dir('./javacript') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }  
             stage('Test') {
                 dir('./javacript') {
-                    sh 'npm test'
+                    bat 'npm test'
                 }
             } 
 
