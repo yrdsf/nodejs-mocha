@@ -11,13 +11,13 @@ chai.use(http);
 describe("Unit testing AQT", () => {
   after(() => app.close);
 
-  /*describe("GET /", () => {
+  describe("GET /", () => {
     it("return a list of products", async () => {
       const res = await chai.request(app).get("/");
 
       expect(res).to.have.status(200);
     });
-  });*/
+  });
 
   describe("404 error", () => {
     it("return category by incorrect iso", async () => {

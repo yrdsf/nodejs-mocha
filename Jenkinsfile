@@ -18,11 +18,11 @@ node {
                     bat 'npm install'
                 }
             }  
-            stage('Test NodeJs') {
+            /*stage('Test NodeJs') {
                 dir('./javascript') {
                     bat 'npm test'
                 }
-            } 
+            }*/
             stage('Test SQL') {
                 dir('./sql') {
                     bat 'npm test'
