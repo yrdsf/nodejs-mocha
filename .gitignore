@@ -84,6 +84,6 @@ typings/
 .dynamodb/
 
 #OSX
-.DS_Store/
+.DS_Store
 
-*/*/reports/*
+*/*/reports/
