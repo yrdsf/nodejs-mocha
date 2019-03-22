@@ -45,7 +45,7 @@ node {
                         bat "Nuget.exe restore"
                         bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:ws.aqt /n:\"AQT - WS - \" /d:sonar.host.url=%SONAR_HOST_URL% /d:sonar.login=%SONAR_AUTH_TOKEN% /d:sonar.branch=${branchName} /d:sonar.inclusions=**/*.cs /d:sonar.cs.nunit.reportsPaths=\"%CD%\\NUnitResults.xml\""
                         bat "\"${msBuildHome}\"\\MSBuild.exe /t:Rebuild"
-                        bat "packages\NUnit.ConsoleRunner.3.9.0\tools\nunit3-console.exe --result=NUnitResults.xml \"net-nunit.Tests\bin\Debug\net-nunit.Tests.dll\""
+                        bat "packages\NUnit.ConsoleRunner.3.9.0\tools\nunit3-console.exe --result=NUnitResults.xml \"net-nunit.Tests\\bin\\Debug\\net-nunit.Tests.dll\""
                         bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end /d:sonar.login=%SONAR_AUTH_TOKEN%"
                     }
                 }
