@@ -23,7 +23,7 @@ node {
                     bat 'npm test'
                 }
             }
-            
+
             stage('Test SQL') {
                 dir('./sql') {
                     bat 'npm test'
@@ -35,26 +35,20 @@ node {
                     archiveArtifacts "*.*"
                 }
             } 
-
-            // stage('Sonar') {
-            //     withSonarQubeEnv('Sonar Qube Server') {
-            //         def branchName = env.BRANCH_NAME.capitalize()
-            //         dir('.') {
-            //             //sh "dotnet tool install --global dotnet-sonarscanner"
-            //             bat "dotnet sonarscanner begin /k:sb.ofertas /n:\"SB - Personalizacion - \" /d:sonar.host.url=%SONAR_HOST_URL% /d:sonar.login=%SONAR_AUTH_TOKEN% /d:sonar.branch=${branchName} /d:sonar.inclusions=**/*.cs"
-            //             bat "dotnet restore"
-            //             bat "dotnet build"
-            //             bat "dotnet sonarscanner end /d:sonar.login=%SONAR_AUTH_TOKEN%"
-            //         }
-            //     }
-            // }
-            // stage('Serverless'){
-            //     dir('src/Serverless/Sync'){
-            //         sh "chmod +x ./build.sh"
-            //         sh "./build.sh"
-            //         sh "serverless deploy"
-            //     }
-            // }
+            stage('Sonar Net') {
+                def sqScannerMsBuildHome = tool 'sonar-scanner-msbuild'
+                def sqScannerHome = tool 'sonar-scanner'
+                def msBuildHome = tool 'msbuild'
+                def branchName = env.BRANCH_NAME.capitalize()
+                withSonarQubeEnv('Sonar Qube Server') {
+                    dir('app') {
+                        bat "Nuget.exe restore"
+                        bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:ws.aqt /n:\"AQT - WS - \" /d:sonar.host.url=%SONAR_HOST_URL% /d:sonar.login=%SONAR_AUTH_TOKEN% /d:sonar.branch=${branchName} /d:sonar.inclusions=**/*.cs"
+                        bat "\"${msBuildHome}\"\\MSBuild.exe /t:Rebuild"
+                        bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe end /d:sonar.login=%SONAR_AUTH_TOKEN%"
+                    }
+                }
+            }
         }
     }
     catch(error) {

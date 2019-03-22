@@ -15,7 +15,7 @@ describe("Unit testing AQT", () => {
     it("return a list of products", async () => {
       const res = await chai.request(app).get("/");
 
-      expect(res).to.have.status(200);
+      expect(res).to.have.status(404);
     });
   });
 
