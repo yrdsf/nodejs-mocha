@@ -1,15 +1,14 @@
 ﻿using netnunit.Controllers;
-using NUnit.Framework;
-using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace netnunit.Tests
 {
-    [TestFixture()]
+    [TestClass]
     public class ProductTest
     {
-        [Test()]
+        [TestMethod]
         public void TestCase()
         {
             var controller = new ProductController();
