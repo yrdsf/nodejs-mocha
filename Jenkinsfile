@@ -30,7 +30,7 @@ node {
             } 
 
             stage('Archive the artifacts') {
-                dir('./sql/reports') {
+                dir('./sql/test/reports') {
                     archiveArtifacts "*.html"
                 }
             } 
