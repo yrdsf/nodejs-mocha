@@ -27,7 +27,7 @@ node {
                 dir('./sql') {
                     bat 'npm test'
 
-                    def patternHtml = "./reports/*"
+                    def patternHtml = "./reports/**"
                     archiveArtifacts "${patternHtml}"
                 }
             } 
