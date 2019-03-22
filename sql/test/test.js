@@ -7,10 +7,10 @@ describe('Set de pruebas', function () {
     var sqlTests;
 
     var dbConfig = {
-        user: "sa",
-        password: "C0n$ult0r@$",
-        server: "AWNTS74",
-        database: "BelcorpPeru"
+        user: "DB_9B3201_dev_admin",
+        password: "P4ssw0rd",
+        server: "sql5040.site4now.net",
+        database: "DB_9B3201_dev"
     };
 
     var errorCallback = function (error) {
@@ -65,26 +65,14 @@ describe('Set de pruebas', function () {
 
         var testSteps = [
             {
-                storProcName: 'dbo.ConfiguracionPais_GetAll',
-                args: {
-                    DesdeCampania: 0,
-                    Codigo: '',
-                    CodigoRegion: '',
-                    CodigoZona: '',
-                    CodigoSeccion: '',
-                    CodigoConsultora: ''
-                },
+                storProcName: 'dbo.SelectCategoria',
+                args: { },
                 assertionCallback: assertionCallback
             },
             {
-                storProcName: 'dbo.ConfiguracionPais_GetAll',
+                storProcName: 'dbo.SelectClienteByFiltro',
                 args: {
-                    DesdeCampania: 0,
-                    Codigo: 'SR',
-                    CodigoRegion: '',
-                    CodigoZona: '',
-                    CodigoSeccion: '',
-                    CodigoConsultora: ''
+                    Filtro: '45400037'
                 },
                 assertionCallback: assertionCallback
             }
@@ -103,21 +91,16 @@ describe('Set de pruebas', function () {
             expect(recordsets.length).to.not.equal(0);
             
             var first_record = recordsets[0][0];
-            
-            expect(first_record.Codigo).to.equal("OFT");
-            expect(first_record.Estado).to.equal(true);
+
+            expect(first_record.Color).to.equal("NEGRO");
+            expect(first_record.PrecioVenta).to.equal(0);
         };
 
         var testSteps = [
             {
-                storProcName: 'dbo.ConfiguracionPais_GetAll',
+                storProcName: 'dbo.SelectProductoByModelo',
                 args: {
-                    DesdeCampania: 0,
-                    Codigo: 'OFT',
-                    CodigoRegion: '',
-                    CodigoZona: '',
-                    CodigoSeccion: '',
-                    CodigoConsultora: ''
+                    Modelo: 'PLATINIUM'
                 },
                 assertionCallback: assertionCallback
             }
