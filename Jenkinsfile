@@ -26,6 +26,9 @@ node {
             stage('Test SQL') {
                 dir('./sql') {
                     bat 'npm test'
+
+                    def patternHtml = "./reports/*"
+                    archiveArtifacts "${patternHtml}"
                 }
             } 
 
