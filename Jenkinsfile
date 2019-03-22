@@ -41,7 +41,7 @@ node {
                 def msBuildHome = tool 'msbuild'
                 def branchName = env.BRANCH_NAME.capitalize()
                 withSonarQubeEnv('Sonar Qube Server') {
-                    dir('app') {
+                    dir('./net/net-nunit') {
                         bat "Nuget.exe restore"
                         bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:ws.aqt /n:\"AQT - WS - \" /d:sonar.host.url=%SONAR_HOST_URL% /d:sonar.login=%SONAR_AUTH_TOKEN% /d:sonar.branch=${branchName} /d:sonar.inclusions=**/*.cs"
                         bat "\"${msBuildHome}\"\\MSBuild.exe /t:Rebuild"
