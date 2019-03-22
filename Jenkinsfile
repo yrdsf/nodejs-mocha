@@ -28,7 +28,7 @@ node {
                     bat 'npm test'
 
                     dir('./reports'){
-                        archiveArtifacts "**"
+                        archiveArtifacts "*.html"
                     }
                 }
             } 
