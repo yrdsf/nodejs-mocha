@@ -40,7 +40,7 @@ node {
                 def branchName = env.BRANCH_NAME.capitalize()
                 withSonarQubeEnv('Sonar Qube Server') {
                     dir('./javascript') {
-                        bat "${sqScannerHome}\\sonar-scanner.bat -Dsonar.host.url=%SONAR_HOST_URL% -Dsonar.login=%SONAR_AUTH_TOKEN% -Dsonar.branch=${branchName} -Dproject.settings=./sonar-project-js.properties"
+                        bat "${sqScannerHome}\\sonar-scanner.bat -Dsonar.host.url=%SONAR_HOST_URL% -Dsonar.login=%SONAR_AUTH_TOKEN% -Dsonar.branch=${branchName} -Dproject.settings=sonar-project-js.properties"
                     }
                 }
             }
