@@ -26,10 +26,12 @@ node {
             stage('Test SQL') {
                 dir('./sql') {
                     bat 'npm test'
+                }
+            } 
 
-                    dir('./reports'){
-                        archiveArtifacts "*.html"
-                    }
+            stage('Archive the artifacts') {
+                dir('./sql/reports') {
+                    archiveArtifacts "*.html"
                 }
             } 
 
