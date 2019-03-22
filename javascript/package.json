@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rimraf dist reports .nyc_output",
     "pretest": "npm run clean",
-    "test": "cross-env NODE_ENV=test nyc mocha test/**/*.js",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov mocha test/**/*.js",
     "start": "nodemon src/app.js",
     "build": "babel src --out-dir dist --copy-files && cp env.yaml dist/",
     "prestart:stage": "npm run clean && npm run build",
